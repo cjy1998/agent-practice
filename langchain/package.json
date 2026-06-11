@@ -1,0 +1,22 @@
+{
+  "name": "langchain-daily",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run --watch index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.1.48",
+    "@langchain/openai": "^1.4.7",
+    "langchain": "^1.4.2",
+    "mathjs": "^15.2.0",
+    "zod": "^4.4.3"
+  }
+}
