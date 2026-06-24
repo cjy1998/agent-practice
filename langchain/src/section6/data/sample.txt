@@ -1,0 +1,11 @@
+LangChain.js is a framework for building applications with large language models.
+
+It provides tools for:
+- Working with different AI providers
+- Managing prompts and templates
+- Processing and storing documents
+- Building RAG systems
+- Creating AI agents
+
+The framework is designed to be modular and composable, allowing developers
+to build complex AI applications by combining simple, reusable components.

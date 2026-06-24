@@ -4,6 +4,7 @@ const envSchema = z.object({
   OPENAI_API_BASE_URL: z.url().min(1),
   OPENAI_API_KEY: z.string().min(1),
   OPENAI_MODEL: z.string().min(1),
+  EMBEDDING_MODEL: z.string().min(1),
 });
 
 // 解析环境变量
@@ -21,4 +22,5 @@ export const settings = {
   openai_api_base_url: parsedEnv.data.OPENAI_API_BASE_URL,
   openai_api_key: parsedEnv.data.OPENAI_API_KEY,
   openai_model: parsedEnv.data.OPENAI_MODEL,
+  embedding_model: parsedEnv.data.EMBEDDING_MODEL,
 };

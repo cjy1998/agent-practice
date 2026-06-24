@@ -12,6 +12,7 @@ import { evaluate } from "mathjs";
 import { dirname, resolve } from "node:path";
 import { mkdir, readdir } from "node:fs/promises";
 import z from "zod";
+import { MultiServerMCPClient } from "@langchain/mcp-adapters";
 
 interface IModelParams {
   modelName?: string;
@@ -232,4 +233,25 @@ export function createConversation(
 
   messages.push(new HumanMessage(newQuestion));
   return messages;
+}
+
+// 安全构建MCP
+export async function createMCPClientSafely(config: any) {
+  try {
+    const client = new MultiServerMCPClient(config);
+    const tools = await client.getTools();
+    console.log(`✅ Connected! Retrieved ${tools.length} tools`);
+    return client;
+  } catch (error) {
+    console.error("Error connecting to MCP:", error);
+    return null;
+  }
+}
+
+// 计算相似度
+export function cosineSimilarity(a: number[], b: number[]): number {
+  const dotProduct = a.reduce((sum, val, i) => sum + val * b[i], 0);
+  const magA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
+  const magB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
+  return dotProduct / (magA * magB);
 }
